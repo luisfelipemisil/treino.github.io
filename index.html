@@ -87,9 +87,6 @@
         .footer a:hover {
             text-decoration: underline;
         }
-        .checkbox {
-            margin-right: 10px;
-        }
         .header-image {
             display: block;
             margin: 0 auto;
@@ -98,12 +95,71 @@
             border-radius: 10px;
             margin-bottom: 20px;
         }
+
+        /* Estilo personalizado para o checkbox */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.custom-checkbox:hover {
+    opacity: 0.8; /* Efeito de hover suave */
+}
+
+.custom-checkbox input[type="checkbox"] {
+    display: none; /* Esconde o checkbox padrão */
+}
+
+.custom-checkbox .checkmark {
+    width: 24px; /* Tamanho maior */
+    height: 24px; /* Tamanho maior */
+    border: 2px solid #2980b9;
+    border-radius: 6px; /* Bordas mais arredondadas */
+    margin-right: 12px;
+    position: relative;
+    background-color: #fff;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+.custom-checkbox .checkmark::after {
+    content: "✔"; /* Usando um ícone de check */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 16px; /* Tamanho do ícone */
+    color: #fff; /* Cor do ícone */
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+    transform: translate(-50%, -50%) scale(1); /* Mostra o ícone de check */
+    opacity: 1;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark + strong {
+    text-decoration: line-through; /* Risca o texto quando marcado */
+    color: #888; /* Muda a cor do texto para indicar conclusão */
+}
+
+/* Efeito de clique */
+.custom-checkbox:active .checkmark {
+    transform: scale(0.95); /* Efeito de "pressionado" */
+}
     </style>
 </head>
 <body>
 
-    <h1>Treino Completo de Sofia</h1>
-    <img src="https://cdn.osaogoncalo.com.br/img/normal/50000/1200x720/gatoacademia_00057220_0-ScaleDownProportional.webp?fallback=https%3A%2F%2Fcdn.osaogoncalo.com.br%2Fimg%2Fnormal%2F50000%2Fgatoacademia_00057220_0.jpg%3Fxid%3D142225%26resize%3D1000%252C500%26t%3D1741684694&xid=142225" 
+    <h1>Treino Completo</h1>
+    <img   src="https://cdn.osaogoncalo.com.br/img/normal/50000/1200x720/gatoacademia_00057220_0-ScaleDownProportional.webp?fallback=https%3A%2F%2Fcdn.osaogoncalo.com.br%2Fimg%2Fnormal%2F50000%2Fgatoacademia_00057220_0.jpg%3Fxid%3D142225%26resize%3D1000%252C500%26t%3D1741684694&xid=142225" 
          alt="Gato na Academia" 
          class="header-image">
 
@@ -113,39 +169,60 @@
         <div class="training-section superiores">
             <h2>Superiores (Peito e Costas)</h2>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Supino Reto:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Press.gif" alt="Supino Reto">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Supino_Reto')">
+                    <span class="checkmark"></span>
+                    <strong>Supino Reto:</strong> 3x12
+                </label>
+                <img id="Supino_Reto" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Press.gif" alt="Supino Reto">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Supino Inclinado com Halteres:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Incline-Dumbbell-Press.gif" alt="Supino Inclinado com Halteres">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Supino_Inclinado')">
+                    <span class="checkmark"></span>
+                    <strong>Supino Inclinado com Halteres:</strong> 3x12
+                </label>
+                <img id="Supino_Inclinado" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Incline-Dumbbell-Press.gif" alt="Supino Inclinado com Halteres">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Crucifixo Reto com Halteres:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Press-1.gif" alt="Crucifixo Reto com Halteres">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Crucifixo_Reto')">
+                    <span class="checkmark"></span>
+                    <strong>Crucifixo Reto com Halteres:</strong> 3x12
+                </label>
+                <img id="Crucifixo_Reto" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Fly.gif" alt="Crucifixo Reto com Halteres">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Puxada Alta na Polia (pegada aberta):</strong> 4x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Lat-Pulldown.gif" alt="Puxada Alta na Polia">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Puxada_Alta')">
+                    <span class="checkmark"></span>
+                    <strong>Puxada Alta na Polia (pegada aberta):</strong> 4x12
+                </label>
+                <img id="Puxada_Alta" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Lat-Pulldown.gif" alt="Puxada Alta na Polia">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Remada Baixa:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Seated-Cable-Rope-Row.gif" alt="Remada Baixa">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Remada_Baixa')">
+                    <span class="checkmark"></span>
+                    <strong>Remada Baixa:</strong> 3x12
+                </label>
+                <img id="Remada_Baixa" src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Seated-Cable-Rope-Row.gif" alt="Remada Baixa">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Pull Over na Polia ou Halteres:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Rope-Straight-Arm-Pulldown.gif" alt="Pull Over">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Pull_Over')">
+                    <span class="checkmark"></span>
+                    <strong>Pull Over na Polia ou Halteres:</strong> 3x12
+                </label>
+                <img id="Pull_Over" src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Rope-Straight-Arm-Pulldown.gif" alt="Pull Over">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Face Pull:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Face-Pull.gif" alt="Face Pull">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Face_Pull')">
+                    <span class="checkmark"></span>
+                    <strong>Face Pull:</strong> 3x12
+                </label>
+                <img id="Face_Pull" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Face-Pull.gif" alt="Face Pull">
             </div>
         </div>
 
@@ -153,49 +230,76 @@
         <div class="training-section pernas">
             <h2>Pernas e Glúteos</h2>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Agachamento Livre:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2023/09/Dumbbell-Squat.gif" alt="Agachamento Livre">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Agachamento_Livre')">
+                    <span class="checkmark"></span>
+                    <strong>Agachamento Livre:</strong> 3x12
+                </label>
+                <img id="Agachamento_Livre" src="https://fitnessprogramer.com/wp-content/uploads/2023/09/Dumbbell-Squat.gif" alt="Agachamento Livre">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Leg Press:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2015/11/Leg-Press.gif" alt="Leg Press">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Stiff_com')">
+                    <span class="checkmark"></span>
+                    <strong>Stiff com Barra:</strong> 3x12
+                </label>
+                <img id="Stiff_com" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Romanian-Deadlift.gif" alt="Stiff com Barra">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Passada com Halteres:</strong> 3x12 (cada perna)
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2023/09/dumbbell-lunges.gif" alt="Passada com Halteres">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Leg_Press')">
+                    <span class="checkmark"></span>
+                    <strong>Leg Press:</strong> 3x12
+                </label>
+                <img id="Leg_Press" src="https://fitnessprogramer.com/wp-content/uploads/2015/11/Leg-Press.gif" alt="Leg Press">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Mesa Flexora:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Leg-Curl.gif" alt="Mesa Flexora">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Passada_com')">
+                    <span class="checkmark"></span>
+                    <strong>Passada com Halteres:</strong> 3x12 (cada perna)
+                </label>
+                <img id="Passada_com" src="https://fitnessprogramer.com/wp-content/uploads/2023/09/dumbbell-lunges.gif" alt="Passada com Halteres">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Stiff com Barra:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Romanian-Deadlift.gif" alt="Stiff com Barra">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Mesa_Flexora')">
+                    <span class="checkmark"></span>
+                    <strong>Mesa Flexora:</strong> 3x12
+                </label>
+                <img id="Mesa_Flexora" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Leg-Curl.gif" alt="Mesa Flexora">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Cadeira Extensora:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/LEG-EXTENSION.gif" alt="Cadeira Extensora">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Cadeira_Extensora')">
+                    <span class="checkmark"></span>
+                    <strong>Cadeira Extensora:</strong> 3x12
+                </label>
+                <img id="Cadeira_Extensora" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/LEG-EXTENSION.gif" alt="Cadeira Extensora">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Hip Thrust com Barra ou Halteres:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Hip-Thrust.gif" alt="Hip Thrust">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Hip_Thrust')">
+                    <span class="checkmark"></span>
+                    <strong>Hip Thrust com Barra ou Halteres:</strong> 3x12
+                </label>
+                <img id="Hip_Thrust" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Hip-Thrust.gif" alt="Hip Thrust">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Abdução no banco ou máquina:</strong> 3x12
-                <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2021/04/pernas-aducao-de-pernas-na-maquina.gif" alt="Abdução">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Abdução_no')">
+                    <span class="checkmark"></span>
+                    <strong>Abdução no banco ou máquina:</strong> 3x12
+                </label>
+                <img id="Abdução_no" src="https://www.mundoboaforma.com.br/wp-content/uploads/2021/04/pernas-aducao-de-pernas-na-maquina.gif" alt="Abdução">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Panturrilha:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Calf-Raise.gif" alt="Panturrilha">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Panturrilha_')">
+                    <span class="checkmark"></span>
+                    <strong>Panturrilha:</strong> 3x12
+                </label>
+                <img id="Panturrilha_" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Calf-Raise.gif" alt="Panturrilha">
             </div>
         </div>
 
@@ -203,57 +307,95 @@
         <div class="training-section ombro-braco-core">
             <h2>Treino C - Ombro, Braço e Core</h2>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Desenvolvimento com Halteres:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2023/09/Standing-Dumbbell-Overhead-Press.gif" alt="Desenvolvimento com Halteres">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Desenvolvimento_com')">
+                    <span class="checkmark"></span>
+                    <strong>Desenvolvimento com Halteres:</strong> 3x12
+                </label>
+                <img id="Desenvolvimento_com" src="https://fitnessprogramer.com/wp-content/uploads/2023/09/Standing-Dumbbell-Overhead-Press.gif" alt="Desenvolvimento com Halteres">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Elevação Lateral:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Lateral-Raise.gif" alt="Elevação Lateral">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Elevação_Lateral')">
+                    <span class="checkmark"></span>
+                    <strong>Elevação Lateral:</strong> 3x12
+                </label>
+                <img id="Elevação_Lateral" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Lateral-Raise.gif" alt="Elevação Lateral">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Crucifixo Inverso na Polia ou Halteres:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Rear-Delt-Machine-Flys.gif" alt="Crucifixo Inverso">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Crucifixo_Inverso')">
+                    <span class="checkmark"></span>
+                    <strong>Crucifixo Inverso na Polia ou Halteres:</strong> 3x12
+                </label>
+                <img id="Crucifixo_Inverso" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Rear-Delt-Machine-Flys.gif" alt="Crucifixo Inverso">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Tríceps Corda na Polia:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Pushdown.gif" alt="Tríceps Corda na Polia">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Tríceps_Corda')">
+                    <span class="checkmark"></span>
+                    <strong>Tríceps Corda na Polia:</strong> 3x12
+                </label>
+                <img id="Tríceps_Corda" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Pushdown.gif" alt="Tríceps Corda na Polia">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Tríceps Testa com Halteres:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Dumbbell-Skull-Crusher.gif" alt="Tríceps Testa com Halteres">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Tríceps_Testa')">
+                    <span class="checkmark"></span>
+                    <strong>Tríceps Testa com Halteres:</strong> 3x12
+                </label>
+                <img id="Tríceps_Testa" src="https://fitnessprogramer.com/wp-content/uploads/2021/06/Dumbbell-Skull-Crusher.gif" alt="Tríceps Testa com Halteres">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Rosca Martelo:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Hammer-Curl.gif" alt="Rosca Martelo">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Rosca_Martelo')">
+                    <span class="checkmark"></span>
+                    <strong>Rosca Martelo:</strong> 3x12
+                </label>
+                <img id="Rosca_Martelo" src="https://fitnessprogramer.com/wp-content/uploads/2021/02/Hammer-Curl.gif" alt="Rosca Martelo">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Rosca Scott ou Concentrada:</strong> 3x12
-                <img src="https://fitnessprogramer.com/wp-content/uploads/2021/04/seated-biceps-curl.gif" alt="Rosca Scott">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Rosca_Scott')">
+                    <span class="checkmark"></span>
+                    <strong>Rosca Scott ou Concentrada:</strong> 3x12
+                </label>
+                <img id="Rosca_Scott" src="https://fitnessprogramer.com/wp-content/uploads/2021/04/seated-biceps-curl.gif" alt="Rosca Scott">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Prancha:</strong> 3x30-45s
-                <img src="https://www.mundoboaforma.com.br/wp-content/uploads/2014/12/prancha-frontal-tradicional-com-bracos-esticados.gif" alt="Prancha">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Prancha_')">
+                    <span class="checkmark"></span>
+                    <strong>Prancha:</strong> 3x30-45s
+                </label>
+                <img id="Prancha_" src="https://www.mundoboaforma.com.br/wp-content/uploads/2014/12/prancha-frontal-tradicional-com-bracos-esticados.gif" alt="Prancha">
             </div>
             <div class="exercise">
-                <input type="checkbox" class="checkbox">
-                <strong>Abdominal na Polia:</strong> 3x12
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnSGFCw-LGBed39no_R7M6y7QcCfz-vnZlJQ&s" alt="Abdominal na Polia">
+                <label class="custom-checkbox">
+                    <input type="checkbox" onclick="hideGif(this, 'Abdominal_na')">
+                    <span class="checkmark"></span>
+                    <strong>Abdominal na Polia:</strong> 3x12
+                </label>
+                <img id="Abdominal_na" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnSGFCw-LGBed39no_R7M6y7QcCfz-vnZlJQ&s" alt="Abdominal na Polia">
             </div>
         </div>
 
     </div>
 
     <div class="footer">
-        <p>Desenvolvido por <a href="https://www.instagram.com/luisfelipemisil/" target="_blank">Felipe Miranda :D </a></p>
+        <p>Desenvolvido por <a href="#" target="_blank">Felipe Miranda 😎</a></p>
     </div>
+
+    <script>
+        function hideGif(checkbox, imageId) {
+            const image = document.getElementById(imageId);
+            if (checkbox.checked) {
+                image.style.display = 'none'; // Esconde a imagem
+            } else {
+                image.style.display = 'block'; // Mostra a imagem
+            }
+        }
+    </script>
 
 </body>
 </html>
